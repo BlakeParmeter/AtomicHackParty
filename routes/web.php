@@ -2,11 +2,18 @@
 
 	use App\Task;
 	use Illuminate\Http\Request;
+	
+	/**
+	 * Home Page
+	 */
+	Route::get('/', function () {
+		return view('home');
+	});
 
 	/**
 	 * Display All Tasks
 	 */
-	Route::get('/', function () {
+	Route::get('/tasks', function () {
 		$tasks = Task::orderBy('created_at', 'asc')->get();
 		return view('tasks', [
 			'tasks' => $tasks
@@ -22,7 +29,7 @@
 		]);
 
 		if ($validator->fails()) {
-			return redirect('/')
+			return redirect('/tasks')
 				->withInput()
 				->withErrors($validator);
 		}
@@ -31,7 +38,7 @@
 		$task->name = $request->name;
 		$task->save();
 
-		return redirect('/');
+		return redirect('/tasks');
 	});
 
 	/**
@@ -40,6 +47,6 @@
 	Route::delete('/task/{id}', function ($id) {
 		Task::findOrFail($id)->delete();
 
-		return redirect('/');
+		return redirect('/tasks');
 	});
 ?>

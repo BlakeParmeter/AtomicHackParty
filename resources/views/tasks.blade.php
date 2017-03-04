@@ -2,8 +2,6 @@
 
 @section('content')
 
-    <!-- Bootstrap Boilerplate... -->
-
     <div class="panel-body">
         <!-- Display Validation Errors -->
         @include('common.errors')
