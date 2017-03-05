@@ -16,15 +16,12 @@
     </head>
 
     <body>
-		<!-- 
-        <div class="container">
-            <nav class="navbar navbar-default">
-                --><!--Navbar Contents--><!-- 
-            </nav>
-        </div>
-		-->
 		<div class='container'>
 			@yield('content')
+		
+			<footer class='footer muted credit'>
+				<p>Property of Blake Parmeter / March 4, 2017 / Built for the Gravitational Marketing Atomic Hack Party.</p>
+			</footer>
 		</div>
     </body>
 </html>
