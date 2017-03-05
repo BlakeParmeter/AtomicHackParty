@@ -29,6 +29,13 @@
 	/** 
 	 * Customer Login Page
 	 */
+	Route::get('/companyLandingPage', function () {
+		return view('companyLandingPage');
+	});
+	
+	/** 
+	 * Customer Login Page
+	 */
 	Route::get('/companyPortal', function () {
 		return view('companyPortal');
 	});

@@ -26,7 +26,7 @@
 			  <li><a href="/">Home</a></li>
 			  <li><a href="/customerSignup">Sign Up</a></li>
 			  <li><a href="/customerLogin">Login</a></li>
-			  <li><a href="/CompanyPortal">Company Portal</a></li>
+			  <li><a href="/companyLandingPage">Company Portal</a></li>
 			</ul>
 		  </div>
 		</nav>
