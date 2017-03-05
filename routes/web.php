@@ -25,14 +25,36 @@
 	});
 	
 	/**
-	 *
+	 * The customer portal
 	 */
-	Route::post('customerPortal', function () {
+	Route::post('customerPortal', function (Request $request) {
 		
-		//TODO: Select a user from the post parameters
+		//Select a user from the post parameters may be the email or the phone number
+		$user = Customer::where('email', '=', $request->user)->orWhere('phone', '=', $request->user)->get();
 		
-		//If not found ask to sign up, if found and the password is incorrect, 
-		//ask to reach out to customer service. 
+		//if there are no results or more than one return handle the issue
+		if($user->isEmpty() == true){
+			return redirect('/customerLogin')
+				->withErrors("Cannot find an account with that information.");
+			
+		}elseif($user->count() != 1){
+			return redirect('/')
+				->withErrors("There is an issue with your account, please call support. ERROR: Naming Collision.");
+		
+		//There was only one result for the user returned
+		}else{
+			$user = $user->first();
+			
+			//invalid password
+			if($user->password != md5($request->password)){
+				return redirect('/customerLogin')
+					->withErrors("Your password is invalid please try again, if you are having issues please contact support.");
+			
+			//load the user's information into the webpage
+			}else{
+				return view('customerPortal', ['user'=>$user]);
+			}
+		}
 	});
 	
 	/**
@@ -62,49 +84,4 @@
 		$customer->save();
 		return redirect('/');
 	});
-	
-	//START OF EXAMPLE / TEST CODE
-	use App\Task;
-	 
-	/**
-	 * Display All Tasks
-	 */
-	Route::get('/tasks', function () {
-		$tasks = Task::orderBy('created_at', 'asc')->get();
-		return view('tasks', [
-			'tasks' => $tasks
-		]);
-	});
-
-	/**
-	 * Add A New Task
-	 */
-	Route::post('/task', function (Request $request) {
-		$validator = Validator::make($request->all(), [
-			'name' => 'required|max:255',
-		]);
-
-		if ($validator->fails()) {
-			return redirect('/tasks')
-				->withInput()
-				->withErrors($validator);
-		}
-
-		$task = new Task;
-		$task->name = $request->name;
-		$task->save();
-
-		return redirect('/tasks');
-	});
-
-	/**
-	 * Delete An Existing Task
-	 */
-	Route::delete('/task/{id}', function ($id) {
-		Task::findOrFail($id)->delete();
-
-		return redirect('/tasks');
-	});
-	
-	//END OF THE EXAMPLE / TEST CODE
 ?>

@@ -64,7 +64,7 @@
 				<b>Note: Your may login with either you email address or your phone number.</b>
 				</br></br>
 
-				<!-- Add Task Button -->
+				<!-- Add Customer Button -->
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-6">
 						<button type="submit" class="btn btn-default">
