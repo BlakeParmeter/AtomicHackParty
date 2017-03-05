@@ -27,7 +27,7 @@
 		<div class="col-lg-4">
 			<h2>Companies</h2>
 			<p>Signup your company to better reach your customer base!</p>
-			<p><a class="btn btn-primary" href="/CompanyPortal">Company Portal</a></p>
+			<p><a class="btn btn-primary" href="/companyPortal">Company Portal</a></p>
 		</div>
 	</div>
 

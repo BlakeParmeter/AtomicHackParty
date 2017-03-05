@@ -3,6 +3,8 @@
 	use App\Customer;
 	use Illuminate\Http\Request;
 	
+	//TODO: Determine how to move the code in the routes somewhere else.
+	
 	/**
 	 * Home Page
 	 */
@@ -22,6 +24,13 @@
 	 */
 	Route::get('/customerLogin', function () {
 		return view('customerLogin');
+	});
+	
+	/** 
+	 * Customer Login Page
+	 */
+	Route::get('/companyPortal', function () {
+		return view('companyPortal');
 	});
 	
 	/**
@@ -65,7 +74,7 @@
 			'fname' => 'required|max:255',
 			'lname' => 'required|max:255',
 			'email' => 'required|email|max:255',
-			'phone' => 'required|max:255',
+			'phone' => 'required|max:255', //TODO: validate and make sure it's got exactly 9 numbers. 
 			'password' => 'required|max:255'
 		]);
 		

@@ -16,6 +16,21 @@
     </head>
 
     <body>
+	
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			  <a class="navbar-brand" href="#">Atomic Hack Party</a>
+			</div>
+			<ul class="nav navbar-nav">
+			  <li><a href="/">Home</a></li>
+			  <li><a href="/customerSignup">Sign Up</a></li>
+			  <li><a href="/customerLogin">Login</a></li>
+			  <li><a href="/CompanyPortal">Company Portal</a></li>
+			</ul>
+		  </div>
+		</nav>
+	
 		<div class='container'>
 			@yield('content')
 		
